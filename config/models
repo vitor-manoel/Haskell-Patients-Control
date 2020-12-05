@@ -1,4 +1,23 @@
-Produto
-    nome  Text
-    preco Double 
-    deriving Show
+Users
+    login Text
+    password Text
+    UniqueUsers login
+
+Categories
+    name Text
+    description Text
+
+Patients
+    name Text
+    birthdate UTCTime
+    address Text
+    city Text
+    state Text
+    gender Text
+    phone Text
+
+Implantations
+    category CategoriesID
+    frequency Text
+    observation Text Maybe
+    patient PatientsID
