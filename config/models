@@ -17,7 +17,7 @@ Patients
     phone Text
 
 Implantations
-    category CategoriesID
+    category CategoriesId
     frequency Text
     observation Text Maybe
-    patient PatientsID
+    patient PatientsId
