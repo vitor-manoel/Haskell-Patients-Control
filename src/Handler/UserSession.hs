@@ -9,7 +9,7 @@ module Handler.UserSession where
 import Import
 
 formLogin :: Form (Text, Text)
-formLogin = renderBootstrap $ (,)
+formLogin mp = renderDivs $ User
     <$> areq emailField "E-mail: " Nothing
     <*> areq passwordField "Senha: " Nothing
 

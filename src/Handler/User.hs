@@ -9,11 +9,11 @@ module Handler.User where
 import Import
 
 formUser :: Form (User, Text)
-formUser = renderBootstrap $ (,)
-    <$> (User
-        <$> areq textField "Nome: " Nothing
-        <*> areq emailField "E-mail: " Nothing
-        <*> areq passwordField "Senha: " Nothing)
+formUser mp = renderDivs $ User
+    <$> 
+        <$> areq textField "Nome: " (fmap userName mp)
+        <*> areq emailField "E-mail: " (fmap userEmail mp)
+        <*> areq passwordField "Senha: " (fmap userPassword mp)
     <*> areq passwordField "Digite Novamente: " Nothing
 
 
@@ -29,12 +29,12 @@ postRegisterR :: Handler Html
 postRegisterR = do
     ((result,_),_) <- runFormPost formUser
     case result of
-        FormSuccess (user,verifica) -> do
-            user <- runDB $ getBy (UniqueUser (userEmail user))
-            case user of
+        FormSuccess (xuser,verifica) -> do
+            xuser <- runDB $ getBy (UniqueEmail (userEmail xuser))
+            case xuser of
                 Nothing -> do
-                    if (userPassword user == verifica) then do
-                        _ <- runDB $ insert user
+                    if (userPassword xuser == verifica) then do
+                        _ <- runDB $ insert xuser
                         setMessage [shamlet|
                             <div .alert.alert-success role="alert">
                                 Cadastrado com sucesso.
@@ -52,4 +52,4 @@ postRegisterR = do
                             Este e-mail já está em uso !
                     |]
                     redirect URegisterR
-        _ -> redirect HomeR
+        _ -> redirect ULoginR
