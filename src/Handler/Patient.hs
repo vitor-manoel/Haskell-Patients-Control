@@ -10,13 +10,13 @@ import Import
 
 formPatient :: Maybe Patient -> Form Patient
 formPatient = renderDivs $ Patient
-    <$> areq textField "Nome: " (fmap produtoName mp)
-    <*> areq intField "Idade: " (fmap produtoAge mp)
-    <*> areq textField "Endereço: " (fmap produtoAddress mp)
-    <*> areq textField "Cidade: " (fmap produtoCity mp)
-    <*> areq textField "Estado: " (fmap produtoState mp)
-    <*> areq textField "Sexo: " (fmap produtoSex mp)
-    <*> areq textField "Telefone: " (fmap produtoPhone mp)
+    <$> areq textField "Nome: " (fmap patientName mp)
+    <*> areq intField "Idade: " (fmap patientAge mp)
+    <*> areq textField "Endereço: " (fmap patientAddress mp)
+    <*> areq textField "Cidade: " (fmap patientCity mp)
+    <*> areq textField "Estado: " (fmap patientState mp)
+    <*> areq textField "Sexo: " (fmap patientSex mp)
+    <*> areq textField "Telefone: " (fmap patientPhone mp)
 
 auxPatientR :: Route App -> Maybe Patient -> Handler Html
 auxPatientR rt mp = do
