@@ -1,1 +1,1 @@
-web: haskell-patients-control
+web: patients-control
