@@ -14,16 +14,16 @@ formLogin = renderBootstrap $ (,)
     <*> areq passwordField "Senha: " Nothing
 
 
-getLoginR :: Handler Html
-getLoginR = do
+getULoginR :: Handler Html
+getULoginR = do
     (widget,_) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do
         $(widgetFile "entrar")
 
 
-postLoginR :: Handler Html
-postLoginR = do
+postULoginR :: Handler Html
+postULoginR = do
     ((result,_),_) <- runFormPost formLogin
     case result of
         FormSuccess (email,password) -> do
@@ -34,7 +34,7 @@ postLoginR = do
                         <div .alert.alert-danger role="alert">
                             E-mail não encontrado.
                     |]
-                    redirect LoginR
+                    redirect ULoginR
                 Just (Entity _ user) -> do
                     if (userPassword user == password) then do
                         setSession "_EMAIL" (userEmail user)
@@ -47,7 +47,7 @@ postLoginR = do
                         redirect EntrarR
         _ -> redirect HomeR
 
-getLogoutR :: Handler Html
-getLogtouR = do
+getULogoutR :: Handler Html
+getULogtouR = do
     deleteSession "_EMAIL"
     redirect HomeR

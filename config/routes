@@ -3,14 +3,12 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/                         LoginR    GET POST
-/logout                   LogoutR   GET
+/                         ULoginR    GET POST
+/logout                   ULogoutR   GET
+/register                 URegisterR GET POST
 
 /patient                  PatientR  GET POST
 /patient/#PatientId/desc  PDescR    GET
 /patients                 PListR    GET
 /patient/#PatientId/upd   PChangeR  GET POST
 /patient/#PatientId/del   PDeleteR  POST
-
-/register                 RegisterR GET POST
-               
