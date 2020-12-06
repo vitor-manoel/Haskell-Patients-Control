@@ -73,7 +73,7 @@ getPListR = do
                         <td>
                             #{patientName patient}
                         <td>
-                            #{patientAge <- patients}
+                            #{patientAge patients}
                         <td>
                             <a href=@{PListR pid}>
                                 Visualizar
