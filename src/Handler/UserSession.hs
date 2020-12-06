@@ -48,6 +48,6 @@ postULoginR = do
         _ -> redirect HomeR
 
 getULogoutR :: Handler Html
-getULogtouR = do
+getULogoutR = do
     deleteSession "_EMAIL"
     redirect HomeR
