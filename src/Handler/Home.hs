@@ -15,4 +15,6 @@ getHomeR = do
         [whamlet|
             <h1>
                 Login
+
+            <img src=@{StaticR imgs_logo_png}>
         |]

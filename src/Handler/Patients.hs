@@ -7,3 +7,9 @@
 module Handler.Patients where
 
 import Import
+
+getPatientR :: Handler Html
+getPatientR = undefined
+    
+postPatientR :: Handler Html
+postPatientR = undefined
