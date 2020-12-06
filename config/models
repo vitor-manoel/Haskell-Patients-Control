@@ -1,7 +1,8 @@
 User
-    login Text
+    name Text
+    email Text
     password Text
-    UniqueUser login
+    UniqueUser email
 
 Category
     name Text
