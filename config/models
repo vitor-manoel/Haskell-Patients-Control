@@ -1,13 +1,13 @@
-Users
+User
     login Text
     password Text
-    UniqueUsers login
+    UniqueUser login
 
-Categories
+Category
     name Text
     description Text
 
-Patients
+Patient
     name Text
     birthdate UTCTime
     address Text
@@ -16,8 +16,8 @@ Patients
     gender Text
     phone Text
 
-Implantations
-    category CategoriesId
+Implantation
+    category CategoryId
     frequency Text
     observation Text Maybe
-    patient PatientsId
+    patient PatientId
