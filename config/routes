@@ -5,7 +5,7 @@
 
 /                         HomeR     GET 
 /patient                  PatientR  GET POST
-/patient/#PatientId/desc  DescR     GET
+/patient/#PatientId/desc  PDescR     GET
 /patients                 PListR    GET
 /patient/#PatientId/upd   PChangeR  GET POST
 /patient/#PatientId/del   PDeleteR  POST

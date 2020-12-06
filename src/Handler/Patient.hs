@@ -9,7 +9,7 @@ module Handler.Patient where
 import Import
 
 formPatient :: Maybe Patient -> Form Patient
-formPatient = renderDivs $ Patient
+formPatient mp = renderDivs $ Patient
     <$> areq textField "Nome: " (fmap patientName mp)
     <*> areq intField "Idade: " (fmap patientAge mp)
     <*> areq textField "Endereço: " (fmap patientAddress mp)
@@ -36,11 +36,11 @@ postPatientR = do
     case res of
         FormSuccess patient -> do
             pid <- runDB (insert patient)
-            redirect (DescR pid)
+            redirect (PDescR pid)
         _ -> redirect HomeR
 
-getDescR :: PatientId -> Handler Html
-getDescR pid = do
+getPDescR :: PatientId -> Handler Html
+getPDescR pid = do
     patient <- runDB $ get404 pid
     defaultLayout [whamlet|
         <h1>
@@ -85,7 +85,7 @@ getPListR = do
                                 Editar
 
                         <td>
-                            <form action=@{postPDeleteR pid} method=post>
+                            <form action=@{PDeleteR pid} method=post>
                                 <input type="submit" value="X">
                         
     |]
