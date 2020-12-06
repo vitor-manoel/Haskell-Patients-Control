@@ -33,5 +33,4 @@ postPatientR = do
     case res of
         FormSuccess patient -> do
             pid <- runDB (insert patient)
-            redirect ()
         _ -> redirect HomeR
