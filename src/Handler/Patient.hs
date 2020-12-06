@@ -86,7 +86,7 @@ getPListR = do
 
                         <td>
                             <form action=@{postPDeleteR pid} method=post>
-                                <input type="submit" value ="X">
+                                <input type="submit" value="X">
                         
     |]
 
