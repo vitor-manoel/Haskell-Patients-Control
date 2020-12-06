@@ -52,7 +52,7 @@ getDescR pid = do
 
 getPListR :: Handler Html
 getPListR = do
-    patients <- runDB $ selectList []
+    patients <- runDB $ selectList [] []
     defaultLayout [whamlet|
         <table>
             <thead>
@@ -72,14 +72,18 @@ getPListR = do
                     <tr>
                         <td>
                             #{patientName patient}
+
                         <td>
                             #{patientAge patients}
+
                         <td>
-                            <a href=@{PListR pid}>
+                            <a href=@{PDescR pid}>
                                 Visualizar
+
                         <td>
                             <a href=@{PChangeR pid}>
                                 Editar
+
                         <td>
                             <form action=@{postPDeleteR pid} method=post>
                                 <input type="submit" value ="X">
