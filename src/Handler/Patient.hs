@@ -15,7 +15,7 @@ formPatient mp = renderDivs $ Patient
     <*> areq textField "Endereço: " (fmap patientAddress mp)
     <*> areq textField "Cidade: " (fmap patientCity mp)
     <*> areq textField "Estado: " (fmap patientState mp)
-    <*> areq textField "Sexo: " (fmap patientSex mp)
+    <*> areq textField "Sexo: " (fmap patientGender mp)
     <*> areq textField "Telefone: " (fmap patientPhone mp)
 
 auxPatientR :: Route App -> Maybe Patient -> Handler Html
