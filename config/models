@@ -2,7 +2,7 @@ User
     name Text
     email Text
     password Text
-    UniqueUser email
+    UniqueEmail email
 
 Category
     name Text
