@@ -52,7 +52,7 @@ getPDescR pid = do
 
 getPListR :: Handler Html
 getPListR = do
-    patients <- runDB $ selectList []
+    patients <- runDB $ selectList [] []
     defaultLayout [whamlet|
         <table>
             <thead>
