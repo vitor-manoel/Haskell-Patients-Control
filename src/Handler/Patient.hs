@@ -10,14 +10,14 @@ import Import
 
 formPatient :: Form Patient
 formPatient = renderDivs $ Patient
-    <$> areq textField (FieldSettings "Nome: "
-                        (Just "Nome do Paciente")
-                        (Just "hs1")
-                        Nothing
-                        [("class", "classe1")]
-                        ) Nothing
-    <$> areq textField "...: " Nothing
-
+    <$> areq textField "Nome: " Nothing
+    <$> areq intField "Idade: " Nothing
+    <$> areq textField "Endereço: " Nothing
+    <$> areq textField "Cidade: " Nothing
+    <$> areq textField "Estado: " Nothing
+    <$> areq textField "Sexo: " Nothing
+    <$> areq textField "Telefone: " Nothing
+    
 getPatientR :: Handler Html
 getPatientR = do
     (widget,_) <- generateFormPost formPatient

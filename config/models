@@ -9,7 +9,7 @@ Category
 
 Patient
     name Text
-    birthdate UTCTime
+    age Int
     address Text
     city Text
     state Text
