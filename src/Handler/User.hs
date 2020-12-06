@@ -22,7 +22,7 @@ getRegisterR = do
     (widget,_) <- generateFormPost formUser
     msg <- getMessage
     defaultLayout $ do
-        $(widgetFile "usuario")
+        $(widgetFile "user")
 
 
 postRegisterR :: Handler Html

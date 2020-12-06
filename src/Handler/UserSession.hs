@@ -19,7 +19,7 @@ getULoginR = do
     (widget,_) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do
-        $(widgetFile "entrar")
+        $(widgetFile "userSession")
 
 
 postULoginR :: Handler Html

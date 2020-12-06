@@ -1,0 +1,12 @@
+$maybe mensa <- msg
+    <div>
+        ^{mensa}
+<h2 .title>
+    Cadastro de usuário
+
+<form role=form method=post action=@{URegisterR}>
+    ^{widget}
+    <div .row>
+        <div .col>
+            <button .btn type="submit">
+                Cadastrar
