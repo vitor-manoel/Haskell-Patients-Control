@@ -30,7 +30,7 @@ postRegisterR = do
     ((result,_),_) <- runFormPost formUser
     case result of
         FormSuccess (user,verifica) -> do
-            user <- runDB $ getBy (UniqueEmail (userEmail user))
+            user <- runDB $ getBy (UniqueUser (userEmail user))
             case user of
                 Nothing -> do
                     if (userPassword user == verifica) then do
@@ -39,17 +39,17 @@ postRegisterR = do
                             <div .alert.alert-success role="alert">
                                 Cadastrado com sucesso.
                         |]
-                        redirect EntrarR
+                        redirect ULoginR
                     else do
                         setMessage [shamlet|
                             <div .alert.alert-danger role="alert">
                                 Falha ao realizar cadastro.
                         |]
-                        redirect CadastroR
+                        redirect URegisterR
                 Just(Entity _ _) -> do
                     setMessage [shamlet|
                         <div .alert.alert-danger role="alert">
                             Este e-mail já está em uso !
                     |]
-                    redirect CadastroR
+                    redirect URegisterR
         _ -> redirect HomeR

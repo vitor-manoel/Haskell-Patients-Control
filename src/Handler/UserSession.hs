@@ -38,16 +38,16 @@ postULoginR = do
                 Just (Entity _ user) -> do
                     if (userPassword user == password) then do
                         setSession "_EMAIL" (userEmail user)
-                        redirect HomeR
+                        redirect ULoginR
                     else do
                         setMessage [shamlet|
                             <div .alert.alert-danger role="alert">
                                 Senha incorreta.
                         |]
-                        redirect EntrarR
-        _ -> redirect HomeR
+                        redirect ULoginR
+        _ -> redirect ULoginR
 
 getULogoutR :: Handler Html
 getULogoutR = do
     deleteSession "_EMAIL"
-    redirect HomeR
+    redirect ULoginR
