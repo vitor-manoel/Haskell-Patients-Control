@@ -33,4 +33,16 @@ postPatientR = do
     case res of
         FormSuccess patient -> do
             pid <- runDB (insert patient)
+            redirect (DescR pid)
         _ -> redirect HomeR
+
+getDescR :: PatientId -> Handler Html
+getDescR pid = do
+    patient <- runDB $ get404 pid
+    defaultLayout [whamlet|
+        <h1>
+            Nome : #{patientName patient}
+
+        <h2>
+            Idade : #{patientAge patient}    
+    |]
