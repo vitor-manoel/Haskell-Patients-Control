@@ -4,7 +4,7 @@ $maybe mensa <- msg
 <h2 .title>
     Cadastro de usuário
 
-<form role=form method=post action=@{URegisterR}>
+<form role=form method=post action=@{CadastroR}>
     ^{widget}
     <div .row>
         <div .col>
