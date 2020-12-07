@@ -3,11 +3,7 @@
     <a href="/patients">
         <img src=@{StaticR imgs_logo_png}>
 
-<nav>
-    <ul>
-        $forall MenuItem label route _ <- navbarFilteredMenuItems
-            <li :Just route == mcurrentRoute:.active>
-                <a href="@{route}">#{label}
+
 
 $if (Just HomeR == mcurrentRoute)
     ^{widget}

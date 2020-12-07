@@ -5,7 +5,7 @@ $maybe mensa <- msg
 <h2 .title>
     Login
 
-<form method=post action=@{HomeR}>
+<form method=post action=@{PListR}>
     ^{widget}
     <div .row>
         <div .col>

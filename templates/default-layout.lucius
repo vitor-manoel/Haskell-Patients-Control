@@ -1,3 +1,8 @@
+.line-details{
+    align-items: center;
+    justify-content: center;
+}
+
 .masthead,
 .navbar {
     background-color: rgb(27, 28, 29);
