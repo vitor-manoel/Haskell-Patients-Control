@@ -36,8 +36,8 @@ postHomeR = do
                     |]
                     redirect HomeR
                 Just (Entity _ usu) -> do
-                    if (usuarioSenha usu == senha) then do
-                        setSession "_EMAIL" (usuarioEmail usu)
+                    if (userPassword usu == senha) then do
+                        setSession "_EMAIL" (userEmail usu)
                         redirect HomeR
                     else do
                         setMessage [shamlet|

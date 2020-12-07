@@ -8,9 +8,9 @@ module Handler.Cadastro where
 
 import Import
 
-formUsu :: Form (Usuario, Text)
+formUsu :: Form (User, Text)
 formUsu = renderBootstrap $ (,)
-    <$> (Usuario
+    <$> (User
         <$> areq textField "Nome: " Nothing
         <*> areq emailField "E-mail: " Nothing
         <*> areq passwordField "Senha: " Nothing)
@@ -22,7 +22,7 @@ getCadastroR = do
     (widget,_) <- generateFormPost formUsu
     msg <- getMessage
     defaultLayout $ do
-        $(widgetFile "usuario")
+        $(widgetFile "user")
 
 
 postCadastroR :: Handler Html
@@ -30,10 +30,10 @@ postCadastroR = do
     ((result,_),_) <- runFormPost formUsu
     case result of
         FormSuccess (usuario,verifica) -> do
-            user <- runDB $ getBy (UniqueEmail (usuarioEmail usuario))
+            user <- runDB $ getBy (UniqueEmail (userEmail usuario))
             case user of
                 Nothing -> do
-                    if (usuarioSenha usuario == verifica) then do
+                    if (userPassword usuario == verifica) then do
                         _ <- runDB $ insert usuario
                         setMessage [shamlet|
                             <div .alert.alert-success role="alert">

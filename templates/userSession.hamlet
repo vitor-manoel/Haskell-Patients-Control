@@ -5,11 +5,11 @@ $maybe mensa <- msg
 <h2 .title>
     Login
 
-<form method=post action=@{ULoginR}>
+<form method=post action=@{HomeR}>
     ^{widget}
     <div .row>
         <div .col>
             <button type="submit" .btn>
                 Entrar
-    <a href="@{URegisterR}">
+    <a href="@{CadastroR}">
         Não possui cadastro?
