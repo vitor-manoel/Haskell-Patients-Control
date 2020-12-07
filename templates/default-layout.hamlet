@@ -1,14 +1,8 @@
 <div .line-details>
 <header>
-    <a href="/">
-        <h1>
-            R
-            <span .danger>
-                .
-            esenhando
-    <div .subtitle>
-        <h2>
-            UM BLOG DE RESENHA DE LIVROS.
+    <a href="/patients">
+        <img src=@{StaticR imgs_logo_png}>
+
 <nav>
     <ul>
         $forall MenuItem label route _ <- navbarFilteredMenuItems
