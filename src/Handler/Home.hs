@@ -19,7 +19,7 @@ getHomeR = do
     (widget,_) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do
-        $(widgetFile "entrar")
+        $(widgetFile "userSession")
 
 
 postHomeR :: Handler Html
