@@ -3,9 +3,9 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/                         ULoginR    GET POST
-/logout                   ULogoutR   GET
-/register                 URegisterR GET POST
+/                         HomeR      GET POST
+/cadastro		          CadastroR  GET POST
+/sair 			          SairR      GET
 
 /patient                  PatientR  GET POST
 /patient/#PatientId/desc  PDescR    GET

@@ -8,13 +8,47 @@ module Handler.Home where
 
 import Import
 
+formLogin :: Form (Text, Text)
+formLogin = renderBootstrap $ (,)
+    <$> areq emailField "E-mail: " Nothing
+    <*> areq passwordField "Senha: " Nothing
+
+
 getHomeR :: Handler Html
 getHomeR = do
+    (widget,_) <- generateFormPost formLogin
+    msg <- getMessage
     defaultLayout $ do
-        addStylesheet (StaticR css_bootstrap_css)
-        [whamlet|
-            <h1>
-                Login
+        $(widgetFile "entrar")
 
-            <img src=@{StaticR imgs_logo_png}>
-        |]
+
+postHomeR :: Handler Html
+postHomeR = do
+    ((result,_),_) <- runFormPost formLogin
+    case result of
+        FormSuccess (email,senha) -> do
+           usuario <- runDB $ getBy (UniqueEmail email)
+           case usuario of
+                Nothing -> do
+                    setMessage [shamlet|
+                        <div .alert.alert-danger role="alert">
+                            E-mail não se encontra na base de dados.
+                    |]
+                    redirect HomeR
+                Just (Entity _ usu) -> do
+                    if (usuarioSenha usu == senha) then do
+                        setSession "_EMAIL" (usuarioEmail usu)
+                        redirect HomeR
+                    else do
+                        setMessage [shamlet|
+                            <div .alert.alert-danger role="alert">
+                                Senha incorreta.
+                        |]
+                        redirect HomeR
+        _ -> redirect HomeR
+
+getSairR :: Handler Html
+getSairR = do
+    deleteSession "_EMAIL"
+    redirect HomeR
+

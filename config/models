@@ -3,10 +3,12 @@ User
     email Text
     password Text
     UniqueEmail email
+    deriving Show
 
 Category
     name Text
     description Text
+    deriving Show
 
 Patient
     name Text
@@ -16,9 +18,11 @@ Patient
     state Text
     gender Text
     phone Text
+    deriving Show
 
 Implantation
     category CategoryId
     frequency Text
     observation Text Maybe
     patient PatientId
+    deriving Show
