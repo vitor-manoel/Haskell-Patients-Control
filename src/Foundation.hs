@@ -58,7 +58,7 @@ data MenuTypes = Navbar MenuItem
 -- This function also generates the following type synonyms:
 -- type Handler = HandlerFor App
 -- type Widget = WidgetFor App ()
-mkYesodData "App" $(parseRoutesFile "config/routes.yesodroutes")
+mkYesodData "App" $(parseRoutesFile "config/routes")
 
 -- | A convenient synonym for creating forms.
 type Form x = Html -> MForm Handler (FormResult x, Widget)
