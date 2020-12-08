@@ -15,7 +15,7 @@ formImplantation = renderBootstrap $ (,)
         <*> areq textField "Observação: " Nothing)
     <*>
 
-getImplantationR :: ImplantationId -> Handler Html
+getImplantationR :: PatientId -> Handler Html
 getImplantationR iid = do
     (widget,_) <- generateFormPost formImplantation
     defaultLayout [whamlet|
