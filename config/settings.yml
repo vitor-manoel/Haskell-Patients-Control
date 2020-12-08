@@ -24,12 +24,12 @@ ip-from-header: "_env:IP_FROM_HEADER:false"
 # See https://github.com/yesodweb/yesod/wiki/Configuration#parsing-numeric-values-as-strings
 
 database:
-  user:     "_env:PGUSER:xyftatcgbgpvdq"
-  password: "_env:PGPASS:2e31293932e459fc95438e87ac16156b86a4ad7c86b25fcc1c8463b0fb5121b8"
-  host:     "_env:PGHOST:ec2-54-156-149-189.compute-1.amazonaws.com"
+  user:     "_env:PGUSER:vcocivkglmqwnc"
+  password: "_env:PGPASS:a3cb61ce8c8748d52ef8e2e08cdd2a13f46d0e883999353edfd3c3f47be21bf7"
+  host:     "_env:PGHOST:ec2-54-237-155-151.compute-1.amazonaws.com"
   port:     "_env:PGPORT:5432"
   # See config/test-settings.yml for an override during tests
-  database: "_env:PGDATABASE:dfjl57jqn3gotb"
+  database: "_env:PGDATABASE:d2lcuspvbvtg6f"
   poolsize: "_env:PGPOOLSIZE:10"
 
 copyright: Controle de Pacientes ® 2020
