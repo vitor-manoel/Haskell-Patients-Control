@@ -38,7 +38,7 @@ postHomeR = do
                 Just (Entity _ usu) -> do
                     if (userPassword usu == senha) then do
                         setSession "_EMAIL" (userEmail usu)
-                        redirect HomeR
+                        redirect PListR
                     else do
                         setMessage [shamlet|
                             <div .alert.alert-danger role="alert">

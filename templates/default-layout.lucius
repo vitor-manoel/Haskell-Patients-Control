@@ -28,6 +28,8 @@
     max-width: 700px;
     margin: 0 auto;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    justify-content: center;
+    align-items: center;
 }
 
 .masthead h1.header {
