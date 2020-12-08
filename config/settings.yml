@@ -32,5 +32,5 @@ database:
   database: "_env:PGDATABASE:dfjl57jqn3gotb"
   poolsize: "_env:PGPOOLSIZE:10"
 
-copyright: Insert copyright statement here
+copyright: Controle de Pacientes ® 2020
 #analytics: UA-YOURCODE
