@@ -10,7 +10,7 @@ import Import
 
 formImplantation :: Maybe Implantation -> Form Implantation
 formImplantation mp = renderDivs $ Implantation
-    <$> areq textField "Frequência: " (fmap ImplantationFraquency mp)
+    <$> areq textField "Frequência: " (fmap ImplantationFrequency mp)
     <*> areq textField "Observação: " (fmap ImplantationObservation mp)
 
 getImplantationR :: ImplantationId -> Handler Html
