@@ -37,7 +37,7 @@ postPatientR = do
         FormSuccess patient -> do
             pid <- runDB (insert patient)
             redirect (PDescR pid)
-        _ -> redirect PListR
+        _ -> redirect PatientR
 
 getPDescR :: PatientId -> Handler Html
 getPDescR pid = do
@@ -88,7 +88,6 @@ getPListR = do
                             <form action=@{PDeleteR pid} method=post>
                                 <input type="submit" value="X">
         <form action=@{PatientR} method=get>
-            ^{widget}
             <input type="submit" value="Cadastrar">
                         
     |]
