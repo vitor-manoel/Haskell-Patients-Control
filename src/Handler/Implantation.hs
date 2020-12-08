@@ -15,7 +15,7 @@ formImplantation mp = renderDivs $ Implantation
 
 getImplantationR :: ImplantationId -> Handler Html
 getImplantationR iid = do
-    (widget,_) <- generateFormPost formLogin
+    (widget,_) <- generateFormPost formImplantation
     msg <- getMessage
     defaultLayout $ do
         ^{widget}                    
