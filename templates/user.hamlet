@@ -10,3 +10,5 @@ $maybe mensa <- msg
         <div .col>
             <button .btn type="submit">
                 Cadastrar
+            <a href=@{HomeR}>
+                Voltar

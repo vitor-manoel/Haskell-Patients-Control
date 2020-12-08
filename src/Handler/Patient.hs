@@ -26,8 +26,9 @@ auxPatientR rt mp = do
         <form action=@{rt} method=post>
             ^{widget}
             <input type="submit" value="Cadastrar">
+            
             <a href=@{PListR}>
-            Voltar
+                Voltar
     |]
 
 getPatientR :: Handler Html
