@@ -12,6 +12,3 @@
 /patients                 PListR    GET
 /patient/#PatientId/upd   PChangeR  GET POST
 /patient/#PatientId/del   PDeleteR  POST
-
-/implantation                       ImplantationR GET POST
-/implantation/#ImplantationId/del   IDeleteR  POST

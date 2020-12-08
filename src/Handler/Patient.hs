@@ -44,10 +44,6 @@ postPatientR = do
 getPDescR :: PatientId -> Handler Html
 getPDescR pid = do
     patient <- runDB $ get404 pid
-    let sql = "SELECT * FROM Implantation \
-                        \ INNER JOIN Patient on Patient.id = Implantation.patient \
-                        \ WHERE Implantation.patient = ?"
-    implantations <- runDB $ rawSql sql [toPersistValue pid] :: Handler [(Entity Implantation, Entity Patient)]
     defaultLayout [whamlet|
         <h3>
             Nome : #{patientName patient}
@@ -72,17 +68,7 @@ getPDescR pid = do
 
         <h2>
             Implantações 
-        
-        $forall Entity pid implantation <- implantations
-        <div>
-            <h4>
-                #{implantationFrequency implantation}
 
-            <h4>
-                #{implantationObservation implantation}
-
-            <form action=@{IDeleteR implantationId} method=post>
-                <input type="submit" value="X">
 
         <input action=@{PListR} value="Voltar">  
     |]
