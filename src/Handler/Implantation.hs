@@ -9,28 +9,13 @@ module Handler.Implantation where
 import Import
 
 formImplantation :: Form (Implantation, Text)
-formImplantation = renderBootstrap $ (,)
-    <$> (Implantation
-        <$> areq textField "Frequência: " Nothing
-        <*> areq textField "Observação: " Nothing)
-    <*>
+formImplantation = undefined
 
 getImplantationR :: Maybe PatientId -> Handler Html
-getImplantationR pid = do
-    (widget,_) <- generateFormPost formImplantation
-    defaultLayout [whamlet|
-        <form action=@{ImplantationR pid} method=post>
-            ^{widget}
-            <input type="submit" value="Cadastrar">
-    |]
+getImplantationR = undefined
 
 postImplantationR :: PatientId -> Handler Html
-postImplantationR pid = do
-    Just (Entity patientId _) -> do
-        _ <- runDB $ insertEntity (Implantation patientId)
-        redirect (PDescR pid)
+postImplantationR = undefined
 
 postIDeleteR :: ImplantationId -> Handler Html
-postIDeleteR iid = do
-    runDB $ delete iid
-    redirect PListR
+postIDeleteR = undefined
