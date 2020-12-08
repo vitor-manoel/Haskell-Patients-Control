@@ -37,7 +37,7 @@ postPatientR = do
         FormSuccess patient -> do
             pid <- runDB (insert patient)
             redirect (PDescR pid)
-        _ -> redirect HomeR
+        _ -> redirect PListR
 
 getPDescR :: PatientId -> Handler Html
 getPDescR pid = do
