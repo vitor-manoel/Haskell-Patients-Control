@@ -5,11 +5,6 @@ User
     UniqueEmail email
     deriving Show
 
-Category
-    name Text
-    description Text
-    deriving Show
-
 Patient
     name Text
     age Int
@@ -21,7 +16,6 @@ Patient
     deriving Show
 
 Implantation
-    category CategoryId
     frequency Text
     observation Text Maybe
     patient PatientId
