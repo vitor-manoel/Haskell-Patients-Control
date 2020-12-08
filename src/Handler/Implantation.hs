@@ -17,8 +17,10 @@ getImplantationR :: ImplantationId -> Handler Html
 getImplantationR iid = do
     (widget,_) <- generateFormPost formImplantation
     msg <- getMessage
-    defaultLayout $ do
-        ^{widget}                    
+    defaultLayout [whamlet|
+        ^{widget}
+        (fmap ImplantationPatient iid)
+    |]              
 
 postIDeleteR :: ImplantationId -> Handler Html
 postIDeleteR iid = do
