@@ -25,6 +25,8 @@ auxPatientR rt mp = do
         <form action=@{rt} method=post>
             ^{widget}
             <input type="submit" value="Cadastrar">
+            <form action=@{PListR} method=get>
+                <input type="submit" value="Voltar">  
     |]
 
 getPatientR :: Handler Html
@@ -62,7 +64,10 @@ getPDescR pid = do
             Sexo : #{patientGender patient}
 
         <h4>
-            Telefone : #{patientPhone patient}      
+            Telefone : #{patientPhone patient}    
+
+        <form action=@{PListR} method=get>
+            <input type="submit" value="Voltar">  
     |]
 
 getPListR :: Handler Html
@@ -102,7 +107,7 @@ getPListR = do
                         <td>
                             <form action=@{PDeleteR pid} method=post>
                                 <input type="submit" value="X">
-        <input action=@{PatientR} value="Cadastrar">
+        <form action=@{PatientR} method=get>
             <input type="submit" value="Cadastrar">
                         
     |]
