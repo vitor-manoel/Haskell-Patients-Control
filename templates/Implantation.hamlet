@@ -1,0 +1,7 @@
+$forall (Entity fid _, Entity _ patient) <- implantation
+    <div .accordion>
+        <div .accordion-header>
+            <div .col-header>
+                <form method=post action=@{DeletarFavoritoR fid}>
+                    <button  type="submit">
+                        Excluir

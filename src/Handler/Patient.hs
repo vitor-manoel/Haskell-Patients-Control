@@ -7,6 +7,7 @@
 module Handler.Patient where
 
 import Import
+import Database.Persist.Sql
 
 formPatient :: Maybe Patient -> Form Patient
 formPatient mp = renderDivs $ Patient
@@ -25,8 +26,7 @@ auxPatientR rt mp = do
         <form action=@{rt} method=post>
             ^{widget}
             <input type="submit" value="Cadastrar">
-            <form action=@{PListR} method=get>
-                <input type="submit" value="Voltar">  
+            <input action=@{PListR} value="Voltar">  
     |]
 
 getPatientR :: Handler Html
@@ -44,6 +44,10 @@ postPatientR = do
 getPDescR :: PatientId -> Handler Html
 getPDescR pid = do
     patient <- runDB $ get404 pid
+    let sql = "SELECT * FROM Implantation \
+                        \ INNER JOIN Patient on Patient.id = Implantation.patient \
+                        \ WHERE Implantation.patient = ?"
+    implantations <- runDB $ rawSql sql [toPersistValue pid] :: Handler [(Entity Implantation, Entity Patient)]
     defaultLayout [whamlet|
         <h3>
             Nome : #{patientName patient}
@@ -64,10 +68,23 @@ getPDescR pid = do
             Sexo : #{patientGender patient}
 
         <h4>
-            Telefone : #{patientPhone patient}    
+            Telefone : #{patientPhone patient} 
 
-        <form action=@{PListR} method=get>
-            <input type="submit" value="Voltar">  
+        <h2>
+            Implantações 
+        
+        $forall Entity pid implantation <- implantations
+        <div>
+            <h4>
+                #{implantationFrequency implantation}
+
+            <h4>
+                #{implantationObservation implantation}
+
+            <form action=@{IDeleteR implantationId} method=post>
+                <input type="submit" value="X">
+
+        <input action=@{PListR} value="Voltar">  
     |]
 
 getPListR :: Handler Html
