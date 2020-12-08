@@ -87,6 +87,8 @@ getPListR = do
                         <td>
                             <form action=@{PDeleteR pid} method=post>
                                 <input type="submit" value="X">
+        <form action=@{PatientR} method=post>
+            <input type="submit" value="Cadastrar">
                         
     |]
 
