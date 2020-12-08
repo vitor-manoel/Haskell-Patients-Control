@@ -26,7 +26,8 @@ auxPatientR rt mp = do
         <form action=@{rt} method=post>
             ^{widget}
             <input type="submit" value="Cadastrar">
-            <input action=@{PListR} value="Voltar">  
+            <a href=@{PListR}>
+            Voltar
     |]
 
 getPatientR :: Handler Html
@@ -70,7 +71,8 @@ getPDescR pid = do
             Implantações 
 
 
-        <input action=@{PListR} value="Voltar">  
+        <a href=@{PListR}>
+            Voltar
     |]
 
 getPListR :: Handler Html
