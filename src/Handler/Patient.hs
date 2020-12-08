@@ -43,11 +43,26 @@ getPDescR :: PatientId -> Handler Html
 getPDescR pid = do
     patient <- runDB $ get404 pid
     defaultLayout [whamlet|
-        <h1>
+        <h3>
             Nome : #{patientName patient}
 
-        <h2>
-            Idade : #{patientAge patient}    
+        <h4>
+            Idade : #{patientAge patient}   
+
+        <h4>
+            Endereço : #{patientAddress patient}   
+        
+        <h4>
+            Cidade : #{patientCity patient}   
+
+        <h4>
+            Estado : #{patientState patient}   
+
+        <h4>
+            Sexo : #{patientGender patient}
+
+        <h4>
+            Telefone : #{patientPhone patient}      
     |]
 
 getPListR :: Handler Html
@@ -87,7 +102,8 @@ getPListR = do
                         <td>
                             <form action=@{PDeleteR pid} method=post>
                                 <input type="submit" value="X">
-        <input href=@{PatientR} value="Cadastrar">
+        <input action=@{PatientR} value="Cadastrar">
+            <input type="submit" value="Cadastrar">
                         
     |]
 
