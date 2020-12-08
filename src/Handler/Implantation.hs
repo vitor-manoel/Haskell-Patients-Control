@@ -8,19 +8,22 @@ module Handler.Implantation where
 
 import Import
 
-formImplantation :: Maybe Implantation -> Form Implantation
-formImplantation mp = renderDivs $ Implantation
-    <$> areq textField "Frequência: " (fmap ImplantationFrequency mp)
-    <*> areq textField "Observação: " (fmap ImplantationObservation mp)
+formImplantation :: Form (Implantation, Text)
+formImplantation = renderBootstrap $ (,)
+    <$> (Implantation
+        <$> areq textField "Frequência: " Nothing
+        <*> areq textField "Observação: " Nothing)
+    <*>
 
 getImplantationR :: ImplantationId -> Handler Html
 getImplantationR iid = do
     (widget,_) <- generateFormPost formImplantation
-    msg <- getMessage
     defaultLayout [whamlet|
-        ^{widget}
-        (fmap ImplantationPatient iid)
-    |]              
+        <form action=@{rt} method=post>
+            ^{widget}
+            {<*> areq intField "Paciente: " iid}
+            <input type="submit" value="Cadastrar">
+    |]
 
 postIDeleteR :: ImplantationId -> Handler Html
 postIDeleteR iid = do

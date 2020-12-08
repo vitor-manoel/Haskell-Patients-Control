@@ -88,6 +88,7 @@ getPListR = do
                             <form action=@{PDeleteR pid} method=post>
                                 <input type="submit" value="X">
         <form action=@{PatientR} method=get>
+            ^{widget}
             <input type="submit" value="Cadastrar">
                         
     |]
