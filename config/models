@@ -18,5 +18,5 @@ Patient
 Implantation
     frequency Text
     observation Text Maybe
-    patient PatientId
+    patient PatientId Maybe
     deriving Show

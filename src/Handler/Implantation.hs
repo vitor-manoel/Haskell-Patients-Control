@@ -15,15 +15,20 @@ formImplantation = renderBootstrap $ (,)
         <*> areq textField "Observação: " Nothing)
     <*>
 
-getImplantationR :: PatientId -> Handler Html
-getImplantationR iid = do
+getImplantationR :: Maybe PatientId -> Handler Html
+getImplantationR pid = do
     (widget,_) <- generateFormPost formImplantation
     defaultLayout [whamlet|
-        <form action=@{rt} method=post>
+        <form action=@{ImplantationR pid} method=post>
             ^{widget}
-            {<*> areq intField "Paciente: " iid}
             <input type="submit" value="Cadastrar">
     |]
+
+postImplantationR :: PatientId -> Handler Html
+postImplantationR pid = do
+    Just (Entity patientId _) -> do
+        _ <- runDB $ insertEntity (Implantation patientId)
+        redirect (PDescR pid)
 
 postIDeleteR :: ImplantationId -> Handler Html
 postIDeleteR iid = do
